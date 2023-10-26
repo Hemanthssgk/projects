@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>addEmployee</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Add Employee</h1>
+<form th:action="@{/saveEmployee}" th:object="${employee}" method="post">
+    <input type="text" placeholder="enter First Name" th:field="*{firstname}" class="form-control col-4 mb-4">
+    <input type="text" placeholder="enter Last Name" th:field="*{lastname}" class="form-control col-4 mb-4">
+    <input type="text" placeholder="enter Email" th:field="*{email}" class="form-control col-4 mb-4">
+    <input type="text" placeholder="enter Phone Number" th:field="*{phoneno}" class="form-control col-4 mb-4">
+    <input type="text" placeholder="enter salary" th:field="*{salary}" class="form-control col-4 mb-4">
+
+    <button type="submit" class="btn btn-primary col-2">Save</button>
+
+<!--    adding below line cause we are going to use same form for update the employee details, if we donot give below field then at the time of update id is not going to be passed,-->
+<!--    and hibernate is going to think it is new object and creates new record instead of updating.-->
+    <input type="hidden" th:field="*{empid}" />
+</form>
+</div>
+</body>
+</html>
