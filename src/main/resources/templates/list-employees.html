@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List Employees</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+        <div class = "container">
+            <h1>List-Employees</h1>
+            <a th:href="@{/addEmployee}" class ="btn btn-primary">
+           Add Employee
+            </a>
+            <table class="table table-dark table-striped">
+                <th>
+                    <tr>
+                        <th>EmpId</th>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>Email</th>
+                        <th>PhoneNo</th>
+                        <th>Salary</th>
+                        <th>Actions</th>
+                    </tr>
+                </th>
+                <tbody>
+                    <tr th:each="employee : ${employees}">
+                        <td th:text="${employee.empid}"></td>
+                        <td th:text="${employee.firstname}"></td>
+                        <td th:text="${employee.lastname}"></td>
+                        <td th:text="${employee.email}"></td>
+                        <td th:text="${employee.phoneno}"></td>
+                        <td th:text="${employee.salary}"></td>
+                        <td>
+                            <a th:href="@{/updateEmployee(employeeId=${employee.empid})}" class="btn btn-primary">Update</a>
+                            <a  th:href="@{/deleteEmployee/{empid}(empid=${employee.empid})}" class="btn btn-primary">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+</body>
+</html>
