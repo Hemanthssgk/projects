@@ -29,7 +29,7 @@ public class User {
     @NotEmpty(message = "name mustn't be empty")
     private String about;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<Post> posts;
 //
 //    @OneToMany

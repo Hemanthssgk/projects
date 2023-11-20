@@ -1,4 +1,4 @@
-package com.BlogApplication.BlogApplicaiton.services;
+package com.BlogApplication.BlogApplicaiton.services.interfaces;
 
 import com.BlogApplication.BlogApplicaiton.repositories.entity.User;
 import com.BlogApplication.BlogApplicaiton.services.model.UserDTO;

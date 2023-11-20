@@ -20,6 +20,11 @@ public class GlobalExceptionHandler {
     {
             return new ResponseEntity<>(new ApiResponse(noResourceFoundException.getMessage(),new Date(),false), HttpStatus.NOT_FOUND);
     }
+    @ExceptionHandler(NoResourcePassedException.class)
+    public ResponseEntity<ApiResponse> resourceNotPassesExceptionHandler(NoResourcePassedException noResourcePassedException)
+    {
+            return new ResponseEntity<>(new ApiResponse(noResourcePassedException.getMessage(),new Date(),false), HttpStatus.NOT_FOUND);
+    }
 
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<Map<String,String>> validationExceptionHandler(ConstraintViolationException constraintViolationException)

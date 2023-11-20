@@ -2,7 +2,7 @@ package com.BlogApplication.BlogApplicaiton.controllers;
 
 import com.BlogApplication.BlogApplicaiton.exceptions.model.ApiResponse;
 import com.BlogApplication.BlogApplicaiton.repositories.entity.User;
-import com.BlogApplication.BlogApplicaiton.services.UserService;
+import com.BlogApplication.BlogApplicaiton.services.interfaces.UserService;
 import com.BlogApplication.BlogApplicaiton.services.model.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -3,6 +3,7 @@ package com.BlogApplication.BlogApplicaiton.services;
 import com.BlogApplication.BlogApplicaiton.exceptions.NoResourceFoundException;
 import com.BlogApplication.BlogApplicaiton.repositories.CategoryRepo;
 import com.BlogApplication.BlogApplicaiton.repositories.entity.Category;
+import com.BlogApplication.BlogApplicaiton.services.interfaces.CategoryService;
 import com.BlogApplication.BlogApplicaiton.services.model.CategoryDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class CategoryServiceImpl implements CategoryService{
+public class CategoryServiceImpl implements CategoryService {
     @Autowired
     CategoryRepo categoryRepo;
     @Autowired
@@ -32,9 +33,12 @@ public class CategoryServiceImpl implements CategoryService{
     public CategoryDTO updateCategory(Category category, Integer id) {
         if (id!=null&&category!=null)
         {
-            categoryRepo.findById(id).orElseThrow(() -> new NoResourceFoundException("Category","id",id));
+            Category category1 =  categoryRepo.findById(id).orElseThrow(() -> new NoResourceFoundException("Category","id",id));
             category.setCategoryId(id);
-            return this.modelMapper.map(category, CategoryDTO.class);
+            category.setPosts(category1.getPosts());
+            category.setDescription(category1.getDescription());
+            category.setTitle(category1.getTitle());
+            return this.modelMapper.map(categoryRepo.save(category), CategoryDTO.class);
         }
 
         throw new NoResourceFoundException("Category","id or Category is null",id);

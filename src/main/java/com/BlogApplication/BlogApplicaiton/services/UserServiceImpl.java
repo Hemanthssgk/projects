@@ -3,6 +3,7 @@ package com.BlogApplication.BlogApplicaiton.services;
 import com.BlogApplication.BlogApplicaiton.exceptions.NoResourceFoundException;
 import com.BlogApplication.BlogApplicaiton.repositories.UserRepository;
 import com.BlogApplication.BlogApplicaiton.repositories.entity.User;
+import com.BlogApplication.BlogApplicaiton.services.interfaces.UserService;
 import com.BlogApplication.BlogApplicaiton.services.model.UserDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;

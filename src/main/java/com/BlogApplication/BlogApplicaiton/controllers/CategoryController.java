@@ -2,7 +2,7 @@ package com.BlogApplication.BlogApplicaiton.controllers;
 
 import com.BlogApplication.BlogApplicaiton.exceptions.model.ApiResponse;
 import com.BlogApplication.BlogApplicaiton.repositories.entity.Category;
-import com.BlogApplication.BlogApplicaiton.services.CategoryService;
+import com.BlogApplication.BlogApplicaiton.services.interfaces.CategoryService;
 import com.BlogApplication.BlogApplicaiton.services.model.CategoryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
