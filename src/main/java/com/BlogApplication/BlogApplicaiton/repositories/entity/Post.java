@@ -6,13 +6,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Post {
     @Override
     public String toString() {
@@ -37,12 +37,11 @@ public class Post {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
-
+    //    using join column here becuase, foriegn key will be stored in the Post table
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
-//    @OneToMany
-//    @JoinColumn(name = "commentId")
-//    List<Comment> comments;
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<Comment> comments = new ArrayList<>();
 }

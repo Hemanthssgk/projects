@@ -5,8 +5,11 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -31,8 +34,8 @@ public class User {
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<Post> posts;
-//
-//    @OneToMany
-//    @JoinColumn(name = "roleId")
-//    List<Role> roles;
+
+    // deleting or updating or doing whatever to the user will update the comments as well, if user is deleted then comment is also deleted.
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    List<Comment> comments = new ArrayList<>();
 }
