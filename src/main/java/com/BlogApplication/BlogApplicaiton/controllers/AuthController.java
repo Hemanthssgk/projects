@@ -13,12 +13,12 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/user")
-public class UserController {
+@RequestMapping("/api/auth")
+public class AuthController {
     @Autowired
     UserService userService;
 
-    @PostMapping("/")
+    @PostMapping("/register")
     public ResponseEntity<UserDTO> saveUser(@RequestBody User user) throws Exception {
         return new ResponseEntity<>(userService.createUser(user), HttpStatus.CREATED);
     }

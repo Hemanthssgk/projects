@@ -10,7 +10,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -26,16 +28,24 @@ public class User {
     @Email(message = "Wrong email Address Provided")
     private String email;
     @NotEmpty(message = "password mustn't be empty")
-    @Size(min = 4, max = 12,message = "Password should be min of 4 chars and max of 12")
+    @Size(min = 4,message = "Password should be min of 4 chars")
     @Pattern(regexp = "^(?=.*[A-Z])(?=.*[\\W_])(?=.*[a-zA-Z0-9]).{4,}$", message = "password should have at-least one uppercase, special char, numbers...")
     private String password;
     @NotEmpty(message = "name mustn't be empty")
     private String about;
 
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Post> posts;
 
     // deleting or updating or doing whatever to the user will update the comments as well, if user is deleted then comment is also deleted.
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     List<Comment> comments = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(
+        name = "roleJoinTable",
+        joinColumns = @JoinColumn(name = "userId" ),
+        inverseJoinColumns = @JoinColumn(name = "roleId")
+    )
+    Set<Role> roles = new HashSet<>();
 }
