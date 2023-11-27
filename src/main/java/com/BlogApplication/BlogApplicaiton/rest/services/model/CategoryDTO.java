@@ -1,0 +1,15 @@
+package com.BlogApplication.BlogApplicaiton.rest.services.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class CategoryDTO {
+
+    private Integer categoryId;
+    private String title;
+    private String description;
+}

@@ -1,6 +1,6 @@
 package com.BlogApplication.BlogApplicaiton;
 
-import com.BlogApplication.BlogApplicaiton.repositories.UserRepository;
+import com.BlogApplication.BlogApplicaiton.rest.repositories.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
