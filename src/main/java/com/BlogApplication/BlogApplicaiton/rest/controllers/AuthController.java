@@ -25,7 +25,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<ApiResponse> LoginUser() throws Exception {
-        String JWTToken = userService.loginuser();
+        String JWTToken = userService.generateJWTForLoggedInUser();
         return ResponseEntity.ok(new ApiResponse(JWTToken,new Date(),true));
     }
 

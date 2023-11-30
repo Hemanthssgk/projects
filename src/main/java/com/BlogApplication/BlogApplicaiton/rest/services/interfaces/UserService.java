@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UserService {
 
-    String loginuser() throws Exception;
+    String generateJWTForLoggedInUser() throws Exception;
     UserDTO createUser(User user) throws Exception;
     UserDTO updateUser(User user, Integer id) throws Exception;
     void deleteUser(Integer id);

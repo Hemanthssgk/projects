@@ -11,7 +11,6 @@ import com.BlogApplication.BlogApplicaiton.utils.JWTUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -36,13 +35,13 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public String loginuser() throws Exception {
+    public String generateJWTForLoggedInUser() throws Exception {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         // authentication happens from AuthenticationProvider we have written. Once authentication happens we are supposed to send a key to client.
         if (authentication.isAuthenticated())
         {
-          return JWTUtils.GenerateJwtToken(authentication);
+          return JWTUtils.generateJwtToken(authentication);
         }
         throw new Exception("User is Not Authentication");
     }
