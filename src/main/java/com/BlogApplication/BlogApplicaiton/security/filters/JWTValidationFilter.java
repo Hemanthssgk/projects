@@ -69,6 +69,6 @@ public class JWTValidationFilter extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
-        return request.getServletPath().equals("/api/auth/login");
+        return request.getServletPath().contains("/api/auth/");
     }
 }

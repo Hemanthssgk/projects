@@ -47,9 +47,10 @@ public class JWTUtils {
 
             String userName = claims.get("userName").toString();
 //        Object authorities = claims.get("authorities");
-        HashMap<String,String> authorities = (HashMap<String, String>) ((List<Object>)claims.get("authorities")).get(0);
+        List<HashMap<String,String>> authorities = (List<HashMap<String, String>>) claims.get("authorities");
 
-        List<SimpleGrantedAuthority> grantedAuthorities =  authorities.keySet().stream().map(k -> new SimpleGrantedAuthority(authorities.get(k))).toList();
+//        List<SimpleGrantedAuthority> grantedAuthorities =  authorities.keySet().stream().map(k -> new SimpleGrantedAuthority(authorities.get(k))).toList();
+        List<SimpleGrantedAuthority> grantedAuthorities = authorities.stream().map(authMap -> new SimpleGrantedAuthority(authMap.get("authority"))).toList();
         // creating the authentication object and setting it inside the security context.
             Authentication auth = new UsernamePasswordAuthenticationToken(userName, null,
                     grantedAuthorities);
