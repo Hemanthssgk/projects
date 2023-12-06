@@ -1,0 +1,15 @@
+Swagger documentation Link --> http://localhost:8081/swagger-ui/index.html
+
+How to use swagger documentation.
+first register user. give below json in request body. use /auth/register url
+{
+  "name": "string",
+  "email": "hemanth@gmail.com",
+  "password": "Hemanth#123",
+  "about": "string"
+}
+
+once we get the response as created. we are good to login to application. user /auth/login url.
+click on execute and it will show a popup to enter username and password. once username and password
+is given. after executing we will get the jwt as response. now provide this jwt in the authorize input box.
+Now we are good to access all the private api's.

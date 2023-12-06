@@ -25,9 +25,13 @@ public class SecurityConfig {
         httpSecurity.cors(AbstractHttpConfigurer::disable);
         httpSecurity.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         httpSecurity.authorizeHttpRequests((authorizeHttpRequests) ->
-//                authorizeHttpRequests.requestMatchers("/api/auth/register","/error").permitAll().anyRequest().authenticated()
-                        authorizeHttpRequests.anyRequest().permitAll()
+                authorizeHttpRequests.requestMatchers("/api/auth/register","/error","/swagger-ui/**","/v3/api-docs/**",
+                        "/swagger-ui/**","/swagger-ui-custom.html",
+                        "/v2/api-docs/**",
+                        "/swagger-resources/**").permitAll()
         );
+
+        httpSecurity.authorizeHttpRequests((httpRequests) -> httpRequests.anyRequest().authenticated());
         httpSecurity.addFilterBefore(new JWTValidationFilter(), BasicAuthenticationFilter.class);
         return httpSecurity.httpBasic(Customizer.withDefaults()).build();
     }
